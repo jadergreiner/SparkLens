@@ -148,3 +148,27 @@ O participante identificou fatores de variação relevantes: warm-up/cache/JIT, 
 Se duas configurações apresentarem distribuições de tempo sobrepostas, **qual decisão responsável seria possível?** Dar ao aluno opção de: manter baseline, realizar novo experimento ou propor mudança com ressalvas, justificando o custo da incerteza.
 
 **Status:** brainstorming aberto, nenhum experimento executado, nenhum escopo aprovado.
+
+## Rodada 3 — Decisão sob incerteza (contribuição do responsável)
+
+> "Manter a configuração atual até existir evidência suficiente."
+
+### Avaliação
+
+A escolha é tecnicamente defensável para os dados fictícios apresentados: A = [8.5, 7.9, 8.2, 7.7, 8.3] min, média 8.12; B = [8.1, 8.4, 7.8, 8.0, 8.2] min, média 8.10; diferença média 0.02 min (=1.2 s, ~0.25% de A). Cinco observações não demonstram superioridade, especialmente sem controle de carga, pareamento ou ambiente. Manter baseline não prova que baseline seja superior: registra **insuficiência de evidência para troca**.
+
+### Contestação
+
+- **Custo de inação:** baseline pode ser muito caro; investigar mais também custa.
+- **Custo de mudança:** regressão, rollback, riscos de disponibilidade e operação.
+- **Decisão contextual:** a mesma evidência pode justificar decisões diferentes conforme impacto e tolerância a risco.
+
+### I19 — Decisão técnica sob incerteza
+
+Cenário didático: aprendiz escolhe manter, investigar ou experimentar uma mudança reversível, defendendo risco, custo, incerteza, critério de aprovação e rollback. Avaliar julgamento técnico, não premiar uma resposta única.
+
+### Nova provocação — Rodada 4: decisão com impacto financeiro
+
+Dois jobs equivalentes são executados diariamente. Configuração atual custa R$ 100/dia. Alternativa estima economia de R$ 20/dia, **mas** em uma medição ocorreu regressão de 30% de duração. Os valores são inteiramente fictícios. Como o aprendiz deveria planejar um experimento de baixo risco para distinguir economia real de ruído? Deve definir uma métrica de custo, um limite de regressão, repetição e possibilidade de voltar à configuração original.
+
+**Status:** brainstorming aberto, sem escopo aprovado nem experiência executada.
