@@ -172,3 +172,23 @@ Cenário didático: aprendiz escolhe manter, investigar ou experimentar uma muda
 Dois jobs equivalentes são executados diariamente. Configuração atual custa R$ 100/dia. Alternativa estima economia de R$ 20/dia, **mas** em uma medição ocorreu regressão de 30% de duração. Os valores são inteiramente fictícios. Como o aprendiz deveria planejar um experimento de baixo risco para distinguir economia real de ruído? Deve definir uma métrica de custo, um limite de regressão, repetição e possibilidade de voltar à configuração original.
 
 **Status:** brainstorming aberto, sem escopo aprovado nem experiência executada.
+
+## Rodada 4 — Contrato prévio de número de execuções
+
+**Contribuição literal do responsável:** "um acordo sobre o numero de execucoes com a config alternativa para avaliar o resultado"
+
+### Avaliação
+
+A ideia introduz pré-compromisso de medição, reduzindo a tentação de escolher uma amostra conveniente depois de observar resultados. **Contestação:** o número de execuções isoladamente não garante segurança, comparação justa ou poder estatístico. Exige também baseline sob condições equivalentes, condições de parada, métricas de custo e latência, e incerteza.
+
+### I20 — Contrato de experimento (ideia-semente, não escopo aprovado)
+
+Antes de executar, aprendiz define: hipótese e métrica principal; mínimo de execuções por variante (10 por configuração apenas como exemplo didático, não tamanho amostral validado); comparação sob mesmos dados/carga/recursos; ordem alternada/randomizada; limiar de regressão operacional e condição de interrupção; procedimento de rollback; tratamento de resultados inconclusivos.
+
+**Falha instrutiva:** se uma execução ameaçar SLA, o contrato deve prever interrupção antecipada em vez de exigir completar todas as repetições.
+
+### Próxima provocação
+
+"Se a alternativa ficar mais barata, mas uma execução ameaçar o SLA, você continuaria o teste? Que limite acordaria para interrompê-lo?" A resposta pode ser qualitativa e não requer fórmula estatística.
+
+**Estado:** brainstorming ainda aberto; hipótese educacional não validada; nenhuma execução real ou provisionamento.
