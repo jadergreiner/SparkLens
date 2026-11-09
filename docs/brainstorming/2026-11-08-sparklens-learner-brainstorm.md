@@ -121,3 +121,30 @@ Cenário hipotético: execução de 10 para 7 minutos com `spark.sql.shuffle.par
 Em vez de pedir imediatamente todos os critérios técnicos, perguntar: **"O tempo de 7 minutos aconteceu uma vez ou várias vezes?"** A resposta guiará o ensino de variabilidade e repetição sem antecipar toda a solução.
 
 **Status:** sessão de brainstorming aberta. Nenhum MVP ou arquitetura aprovado.
+
+## Rodada 2 — Resposta sobre repetibilidade
+
+**Contribuição do responsável (literal):** "mais execucoes distingue ambiente quente/frio, disponibilidade de maquinas/workers, rede e os proprios dados. Reduzo as variavis externas quanto a sua incerteza/variabilidade"
+
+### Análise técnica
+
+O participante identificou fatores de variação relevantes: warm-up/cache/JIT, disponibilidade/concorrência de workers, rede e características dos dados.
+
+**Precisão essencial:** repetições permitem **estimar** dispersão e robustez do resultado; não garantem controle dos fatores externos nem causalidade. Comparar blocos de configurações sem randomização pode confundir mudança de parâmetros com horário, carga do cluster ou cache.
+
+### Princípios de laboratório candidatos (não aprovados)
+
+- Manter dataset e configuração de recursos equivalentes, registrando diferenças inevitáveis.
+- Alternar ou randomizar a ordem dos tratamentos A e B e observar aquecimento.
+- Repetir medições e analisar mediana/dispersão, não escolher apenas melhor tempo.
+- Registrar métricas de CPU, memória, shuffle, spill, executores, tarefas, skew e presença de AQE conforme pertinência.
+- Não usar ganho isolado como certificação de causa técnica.
+- Exigir tanto a argumentação sobre mecanismo quanto a investigação de explicações alternativas.
+
+**Ideia-semente I18 — Laboratório de causalidade de performance:** comparar duas configurações em execuções repetidas, introduzindo variação de cache e concorrência para ensinar diferença entre **observação, variabilidade e causalidade**. Um resultado inconclusivo fundamentado é aceitável.
+
+### Próxima provocação
+
+Se duas configurações apresentarem distribuições de tempo sobrepostas, **qual decisão responsável seria possível?** Dar ao aluno opção de: manter baseline, realizar novo experimento ou propor mudança com ressalvas, justificando o custo da incerteza.
+
+**Status:** brainstorming aberto, nenhum experimento executado, nenhum escopo aprovado.
