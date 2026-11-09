@@ -90,3 +90,34 @@ Nenhum conceito foi aprovado. A sessão ainda precisa de contribuições do usu�
 **Se o job ficou 30% mais rápido após uma mudança de `spark.sql.shuffle.partitions`, quais provas mínimas o estudante deveria apresentar antes de afirmar que entendeu e resolveu o gargalo?** Considerar métricas, explicação causal, execuções comparáveis e hipóteses alternativas. O número 30% é hipotético, não benchmark do produto.
 
 **Status:** brainstorming aberto; sem MVP ou arquitetura aprovados, sem experimentos executados.
+
+## Rodada 2 — Descoberta sobre a jornada de aprendizagem
+
+**Contribuição do responsável:** "Não tenho estas respostas (eu também preciso delas)."
+
+### Aprendizado de produto
+
+A hipótese de persona também se aplica ao próprio criador: a experiência precisa ensinar **como identificar evidências** antes de exigir defesa técnica. Não interpretar ausência de resposta como falha no aluno nem como prova de demanda de mercado.
+
+### Exemplo para ensino
+
+Cenário hipotético: execução de 10 para 7 minutos com `spark.sql.shuffle.partitions` de 200 para 80. A redução observada é de 30%, mas uma execução isolada não estabelece causalidade.
+
+- Observar: verificar plano físico, partições realmente aplicadas, métricas de tarefas, shuffle, spill e variabilidade.
+- Investigar: avaliar AQE, cache, volume, concorrência e diferenças de ambiente.
+- Comprovar: repetir testes comparáveis, formular hipótese falsificável e registrar resultados contrários.
+- Aprendizado: justificativa coerente e resultado inconclusivo podem demonstrar mais competência do que ganho fortuito.
+
+### Três níveis candidatos (não aprovados)
+
+1. **Aprender a observar:** conceitos e interpretação de métricas e planos.
+2. **Aprender a investigar:** hipóteses e escolha de evidências.
+3. **Aprender a comprovar:** testes controlados, explicação causal e defesa técnica.
+
+**Risco a testar:** transformar o produto em curso genérico; diferencial exigirá efeito sobre desempenho independente em casos novos. Não avançar o M0 com base apenas nessa observação.
+
+### Próxima pergunta acessível ao aprendiz
+
+Em vez de pedir imediatamente todos os critérios técnicos, perguntar: **"O tempo de 7 minutos aconteceu uma vez ou várias vezes?"** A resposta guiará o ensino de variabilidade e repetição sem antecipar toda a solução.
+
+**Status:** sessão de brainstorming aberta. Nenhum MVP ou arquitetura aprovado.
